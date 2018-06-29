@@ -1,1 +1,1 @@
-dir /b *.HEIC >Sample2.txt
+dir /b *.jpg >Sample2.txt

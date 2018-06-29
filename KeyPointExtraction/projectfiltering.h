@@ -17,22 +17,25 @@ struct key_points{
     cv::Mat descriptors_object;
 };
 
-class projectFiltering
+class ProjectFiltering
 {
 public:
-    projectFiltering();
+    ProjectFiltering();
 
     vector<string> readImageFile(string path);
     vector<cv::Mat> setSampleImages(vector<string> &paths);
     cv::Rect selectRoiForImages(vector<cv::Mat> &images);
     vector<cv::Mat> filterUsingBilateral(vector<cv::Mat> &images, int pixelDiameter, double sigmaColorSpace, double sigmaCoordinateSpace);
     vector<cv::Mat> changeColorSpace(vector<cv::Mat> &images,int code);
-    vector<key_points> findKeyPoints(vector<cv::Mat> &images);
-
+    void splitColorSpace(vector<cv::Mat> &images);
+    vector<key_points> findKeyPoints(vector<cv::Mat> &images, int nFeatures);
+    void downSampleImage(cv::Mat &image);
 private:
     cv::Mat ActualImage;
     string path_local="C:/Users/Clein Sarmiento/Desktop/secondmasters/KaLi/Semester1/Project A KaLi/Programm/bin/Sample 1/";
-
+    vector<cv::Mat> imagesHueChannel;
+    vector<cv::Mat> imagesSaturationChannel;
+    vector<cv::Mat> imagesValueChannel;
 protected:
 };
 
