@@ -1,0 +1,1 @@
+dir /b *.HEIC >Sample3.txt
